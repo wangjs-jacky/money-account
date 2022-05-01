@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { Icon } from "./Icon";
 
@@ -13,6 +13,12 @@ const Nav = styled.nav`
         display: flex;
         flex-direction: column;
         align-items: center;
+        &.selected{
+          color: red !important;
+          .icon{
+            fill: red !important;
+          }
+        }
       }
     }
   }
@@ -23,22 +29,25 @@ export const NavBar = (props: any) => {
     <Nav>
       <ul>
         <li>
-          <Link to="/tags">
+          <NavLink
+            to="/tags"
+            className={({ isActive }) => (isActive ? "selected" : "")}
+          >
             <Icon tag="tag"></Icon>
             标签页
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link to="/money">
+          <NavLink to="/money" className={({ isActive }) => (isActive ? "selected" : "")}>
             <Icon tag="money"></Icon>
             记账页
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link to="/statistics">
+          <NavLink to="/statistics" className={({ isActive }) => (isActive ? "selected" : "")}>
             <Icon tag="statistics"></Icon>
             统计页
-          </Link>
+          </NavLink>
         </li>
       </ul>
     </Nav>
