@@ -2,9 +2,14 @@ import React from 'react';
 import { Link, Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 import styled from "styled-components";
-require("./icons/tag.svg");
-require("./icons/money.svg");
-require("./icons/statistics.svg");
+// 自动导入所有的图片
+// https://webpack.js.org/guides/dependency-management/#requirecontext
+// 安装 @types/webpack-env 解决 __WebpackModuleApi.RequireContext 报错
+// let importAll = (requireContext: __WebpackModuleApi.RequireContext) => requireContext.keys().forEach(requireContext);
+// try { importAll(require.context('icons', true, /\.svg$/)); } catch (error) { console.log(error); }
+require("icons/money.svg");
+require("icons/statistics.svg");
+require("icons/tag.svg");
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -38,8 +43,8 @@ function App() {
           <Route path="/tags" element={<Tags></Tags>}></Route>
           <Route path="/money" element={<Money></Money>}></Route>
           <Route path="/statistics" element={<Statistics></Statistics>}></Route>
-          <Route path="*" element={<Navigate to={"tags"} replace={true} />}></Route>
-          {/* <Route path="*" element={<NoMatch></NoMatch>}></Route> */}
+          {/* <Route path="*" element={<Navigate to={"tags"} replace={true} />}></Route> */}
+          <Route path="*" element={<NoMatch></NoMatch>}></Route>
         </Routes>
       </Main>
       <Nav>
