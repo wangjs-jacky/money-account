@@ -2,7 +2,9 @@ import React from 'react';
 import { Link, Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 import styled from "styled-components";
-import tag from "./icons/money.svg";
+require("./icons/tag.svg");
+require("./icons/money.svg");
+require("./icons/statistics.svg");
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -16,12 +18,14 @@ const Main = styled.div`
 
 const Nav = styled.nav`
   box-shadow: 0 0 3px rgba(0,0,0,0.25);
+  padding: 5px 0 5px 0;
   ul{
     display: flex;
     li{
       flex-grow: 1;
       display: flex;
       flex-direction: column;
+      align-items: center;
     }
   }
 `
@@ -41,15 +45,21 @@ function App() {
       <Nav>
         <ul>
           <li>
-            <img src={tag}></img>
+            <svg>
+              <use xlinkHref="#tag"></use>
+            </svg>
             <Link to="/tags">标签页</Link>
           </li>
           <li>
-            <img src={tag}></img>
+            <svg>
+              <use xlinkHref="#money"></use>
+            </svg>
             <Link to="/money">记账页</Link>
           </li>
           <li>
-            <img src={tag}></img>
+            <svg>
+              <use xlinkHref="#statistics"></use>
+            </svg>
             <Link to="/statistics">统计页</Link>
           </li>
         </ul>

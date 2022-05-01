@@ -17,13 +17,15 @@ body {
 ul,
 ol {
   list-style: none;
+  padding: 0px;
+  margin: 0px;
 }
 
 a {
   text-decoration: none;
 }
 
-img {
+svg {
   height: 2em;
   width: 2em;
 }
