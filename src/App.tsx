@@ -1,49 +1,80 @@
 import React from 'react';
-import { Link, Route, Routes } from 'react-router-dom';
+import { Link, Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
+import styled from "styled-components";
+
+const Wrapper = styled.div`
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+`
+
+const Main = styled.div`
+  flex-grow: 1;
+`
+
+const Nav = styled.nav`
+  border: 1px solid blue;
+  ul{
+    display: flex;
+    li{
+      flex-grow: 1;
+    }
+  }
+`
 
 function App() {
   return (
-    <div className="App">
-      Hello World!
-      <nav>
+    <Wrapper>
+      <Main>
+        <Routes>
+          <Route path="/tags" element={<Tags></Tags>}></Route>
+          <Route path="/money" element={<Money></Money>}></Route>
+          <Route path="/statistics" element={<Statistics></Statistics>}></Route>
+          <Route path="*" element={<Navigate to={"tags"} replace={true} />}></Route>
+          {/* <Route path="*" element={<NoMatch></NoMatch>}></Route> */}
+        </Routes>
+      </Main>
+      <Nav>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/tags">标签页</Link>
           </li>
           <li>
-            <Link to="/about">About</Link>
+            <Link to="/money">记账页</Link>
           </li>
           <li>
-            <Link to="/users">Users</Link>
+            <Link to="/statistics">统计页</Link>
           </li>
         </ul>
-      </nav>
-      <Routes>
-        <Route path="/" element={<Home></Home>}></Route>
-        <Route path="/about" element={<About></About>}></Route>
-        <Route path="/users" element={<Users></Users>}></Route>
-      </Routes>
-    </div>
+      </Nav>
+
+    </Wrapper>
   );
 }
 
 export default App;
 
-function Home(){
-  return(
-    <h2>Home</h2>
+function Tags() {
+  return (
+    <h2>标签页</h2>
   )
 }
 
-function About(){
-  return(
-    <h2>About</h2>
+function Money() {
+  return (
+    <h2>记账页</h2>
   )
 }
 
-function Users(){
-  return(
-    <h2>Users</h2>
+function Statistics() {
+  return (
+    <h2>统计页</h2>
+  )
+}
+
+function NoMatch() {
+  return (
+    <h2>404</h2>
   )
 }
