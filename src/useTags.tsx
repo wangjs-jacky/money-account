@@ -29,14 +29,14 @@ export const useTags = () => {
     return tag?.name;
   };
   const updatetag = (tagId: string, newTagName: string) => {
-    let index = tags.findIndex((tag) => tag.id === tagId);
-    let newTags = JSON.parse(JSON.stringify(tags));
-    newTags[index]["name"] = newTagName;
-    setTags(newTags);
+    setTags(
+      tags.map((tag) =>
+        tag.id === tagId ? { id: tagId, name: newTagName } : tag
+      )
+    );
   };
   const deleteTag = (tagId: string) => {
-    let newTags = tags.filter((tag) => tag.id !== tagId);
-    setTags(newTags);
+    setTags(tags.filter((tag) => tag.id !== tagId));
   };
   return { tags, setTags, onAddTag, findTag, updatetag, deleteTag };
 };
