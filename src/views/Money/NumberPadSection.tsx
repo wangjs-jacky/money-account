@@ -98,7 +98,19 @@ const handleText = (text: string, output = "0") => {
 };
 
 export const NumberPadSection: React.FC = (props) => {
-  const [output, setOutput] = useState("100");
+  const [output, _setOutput] = useState("100");
+  const setOutput = (output: string) => {
+    let value;
+    if (output.length > 16) {
+      value = output.slice(0, 16);
+    } else if (output.length === 0) {
+      value = "0";
+    } else {
+      value = output;
+    }
+    _setOutput(value)
+  };
+
   const onClickButton = (e: React.MouseEvent) => {
     const text = (e.target as HTMLButtonElement).innerHTML;
     setOutput(handleText(text, output));
