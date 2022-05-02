@@ -1,5 +1,6 @@
-let count = 0;
+let count = parseInt(window.localStorage.getItem("tagId") || "0");
 export const createId = () => {
-    count++;
-    return count.toString();
+  count++;
+  window.localStorage.setItem("tagId", count.toString());
+  return count.toString();
 };

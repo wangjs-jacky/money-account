@@ -7,22 +7,19 @@ export type TagType = {
   name: string;
 };
 
-const defaultValue = [
-  { id: createId(), name: "衣" },
-  { id: createId(), name: "食" },
-  { id: createId(), name: "住" },
-  { id: createId(), name: "行" },
-];
-
 // 自定义 Hooks
 export const useTags = () => {
   const [tags, setTags] = useState<TagType[]>([]);
   // 读缓存，如果没有，就把 衣食住行 存进去。
   useEffect(() => {
-    console.log("1111");
     let localTags = JSON.parse(window.localStorage.getItem("tags") || "[]");
     if (localTags.length === 0) {
-      localTags = defaultValue;
+      localTags = [
+        { id: createId(), name: "衣" },
+        { id: createId(), name: "食" },
+        { id: createId(), name: "住" },
+        { id: createId(), name: "行" },
+      ];;
     }
     setTags(localTags);
   }, []);
@@ -30,7 +27,6 @@ export const useTags = () => {
   // 如果 tags 变化了，则存入 localStorage
   // 在 依赖数组 tags 从 undefined => [] 被错算为一次变化
   useUpdate(() => {
-    console.log("22222");
     window.localStorage.setItem("tags", JSON.stringify(tags));
   }, [tags]);
 
