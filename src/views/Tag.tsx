@@ -4,7 +4,7 @@ import { Icon } from "components/Icon";
 import { Input } from "components/Input";
 import { Layout } from "components/Layout";
 import { Space } from "components/Space";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { useTags } from "useTags";
 
@@ -57,10 +57,14 @@ export const Tag: React.FC = () => {
       </Center>
     </>
   );
+  const navigate = useNavigate();
+  const onClickBack = () => {
+    navigate(-1);
+  };
   return (
     <Layout>
       <Topbar>
-        <Icon tag="left"></Icon>
+        <Icon tag="left" onClick={onClickBack}></Icon>
         <span>编辑标签</span>
       </Topbar>
       {tagName ? tagContent() : <Center> tag 不存在</Center>}

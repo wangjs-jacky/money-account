@@ -6,17 +6,18 @@
 require("icons/money.svg");
 require("icons/statistics.svg");
 require("icons/tag.svg");
-require("icons/left.svg")
-require("icons/right.svg")
+require("icons/left.svg");
+require("icons/right.svg");
 
 type Props = {
-    tag: string
-}
+  tag: string;
+} & React.SVGAttributes<SVGElement>;
 
-export const Icon = (props: Props) => {
-    return (
-        <svg className="icon">
-            <use xlinkHref={"#" + props.tag}></use>
-        </svg>
-    )
-}
+export const Icon:React.FC<Props> = (props) => {
+  const { tag, children, className, ...rest } = props;
+  return (
+    <svg className="icon" {...rest}>
+      <use xlinkHref={"#" + tag}></use>
+    </svg>
+  );
+};
