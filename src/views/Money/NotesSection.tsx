@@ -23,16 +23,26 @@ const Wrapper = styled.section`
   }
 `;
 
-export const NotesSection: React.FC = (props) => {
-  const [note, setNote] = useState("");
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setNote((e.target as HTMLInputElement).value);
+type Props = {
+  value: string;
+  onChange: (x: string) => void;
+};
+
+export const NotesSection: React.FC<Props> = ({ value, onChange }) => {
+  let note = value;
+  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onChange((e.target as HTMLInputElement).value);
   };
   return (
     <Wrapper>
       <label>
         <span>备注</span>
-        <input type="text" placeholder="在这里添加备注" onChange={onChange} />
+        <input
+          type="text"
+          value={note}
+          placeholder="在这里添加备注"
+          onChange={onInputChange}
+        />
       </label>
     </Wrapper>
   );

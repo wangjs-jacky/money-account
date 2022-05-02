@@ -34,12 +34,13 @@ const Wrapper = styled.section`
 `;
 
 type Props = {
-  // value: string;
+  value: string[];
+  onChange: (x:string[]) => void;
 };
 
-export const TagsSection: React.FC = (props) => {
+export const TagsSection: React.FC<Props> = ({value,onChange}) => {
   const [tags, setTags] = useState(["衣", "食", "住", "行"]);
-  const [selectedTag, setSelectedTag] = useState<string[]>([]);
+  const selectedTag = value;
   const onAddTag = () => {
     const tagName = window.prompt("请输入新的标签：");
     if (tagName !== null) {
@@ -52,9 +53,9 @@ export const TagsSection: React.FC = (props) => {
     if (index >= 0) {
       const _selectedTag = selectedTag.slice(0);
       _selectedTag.splice(index, 1);
-      setSelectedTag(_selectedTag);
+      onChange(_selectedTag);
     } else {
-      setSelectedTag([...selectedTag, tag]);
+      onChange([...selectedTag, tag]);
     }
   };
 

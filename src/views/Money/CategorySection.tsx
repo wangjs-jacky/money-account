@@ -25,16 +25,22 @@ const Wrapper = styled.section`
   }
 `;
 
-export const CategorySection: React.FC = (props) => {
+type Category = "-" | "+";
+
+type Props = {
+  value: Category;
+  onChange: (x: Category) => void;
+};
+
+export const CategorySection: React.FC<Props> = ({ value, onChange }) => {
   // 准备 Hash 字典
   const categoryMap = { "-": "支出", "+": "收入" };
   // 使用 type 联合字符串
   type Y = keyof typeof categoryMap;
   const [categoryList] = useState<Y[]>(["-", "+"]);
-  const [selectedCategory, setSelectedCategory] = useState("+");
-  const onChange = (category: string) => {
-    console.log(category);
-    setSelectedCategory(category);
+  let selectedCategory = value;
+  const onTypeChange = (category: Category) => {
+    onChange(category);
   };
   return (
     <Wrapper>
@@ -43,7 +49,7 @@ export const CategorySection: React.FC = (props) => {
           <li
             key={c}
             className={selectedCategory === c ? "selected" : ""}
-            onClick={() => onChange(c)}
+            onClick={() => onTypeChange(c)}
           >
             {categoryMap[c]}
           </li>

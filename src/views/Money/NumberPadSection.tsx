@@ -97,8 +97,13 @@ const handleText = (text: string, output = "0") => {
   }
 };
 
-export const NumberPadSection: React.FC = (props) => {
-  const [output, _setOutput] = useState("100");
+type Props = {
+  value: string;
+  onChange: (x: string) => void;
+};
+
+export const NumberPadSection: React.FC<Props> = ({ value, onChange }) => {
+  let output = value;
   const setOutput = (output: string) => {
     let value;
     if (output.length > 16) {
@@ -108,7 +113,7 @@ export const NumberPadSection: React.FC = (props) => {
     } else {
       value = output;
     }
-    _setOutput(value)
+    onChange(value);
   };
 
   const onClickButton = (e: React.MouseEvent) => {
