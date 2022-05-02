@@ -16,31 +16,29 @@ export function Money() {
     amount: "0",
   });
 
+  // 设计时，需要指定 key 和 value ，即 onChange({key:value})
+  const onChange = (obj: Partial<typeof selected>) => {
+    setSelected({ ...selected, ...obj });
+  };
+
   return (
     <Layout>
       <TagsSection
         value={selected.tags}
-        onChange={(tags: string[]) => {
-          setSelected({ ...selected, tags: tags });
-        }}
+        onChange={(tags) => onChange({ tags: tags })}
       />
       <NotesSection
         value={selected.note}
-        onChange={(note: string) => {
-          setSelected({ ...selected, note: note });
-        }}
+        onChange={(note) => onChange({ note: note })}
       />
       <CategorySection
         value={selected.category}
-        onChange={(category: Category) => {
-          setSelected({ ...selected, category: category });
-        }}
+        onChange={(category) => onChange({ category: category })}
       />
-      <NumberPadSection 
-      value={selected.amount} 
-      onChange={(amount:string)=>{
-        setSelected({ ...selected, amount: amount });
-      }}/>
+      <NumberPadSection
+        value={selected.amount}
+        onChange={(amount) => onChange({ amount: amount })}
+      />
     </Layout>
   );
 }
