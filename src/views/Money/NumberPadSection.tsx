@@ -1,6 +1,7 @@
+import React, { useState } from "react";
 import styled from "styled-components";
 
-export const NumberPadSection = styled.section`
+const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
   > .output {
@@ -57,3 +58,70 @@ export const NumberPadSection = styled.section`
     }
   }
 `;
+
+const handleText = (text: string, output = "0") => {
+  switch (text) {
+    case "0":
+    case "1":
+    case "2":
+    case "3":
+    case "4":
+    case "5":
+    case "6":
+    case "7":
+    case "8":
+    case "9":
+      if (output === "0") {
+        return text;
+      } else {
+        return output + text;
+      }
+    case "删除":
+      if (output.length === 1) {
+        return "0";
+      } else {
+        return output.slice(0, -1);
+      }
+    case "清空":
+      return "0";
+    case "OK":
+      console.log(output);
+      return output;
+    case ".":
+      if (output.indexOf(".") >= 0) {
+        return output;
+      }
+      return output + ".";
+    default:
+      return "";
+  }
+};
+
+export const NumberPadSection: React.FC = (props) => {
+  const [output, setOutput] = useState("100");
+  const onClickButton = (e: React.MouseEvent) => {
+    const text = (e.target as HTMLButtonElement).innerHTML;
+    setOutput(handleText(text, output));
+  };
+  return (
+    <Wrapper>
+      <div className="output">{output}</div>
+      <div className="pad clearfix" onClick={onClickButton}>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>删除</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button>清空</button>
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button className="ok">OK</button>
+        <button className="zero">0</button>
+        <button className="dot">.</button>
+      </div>
+    </Wrapper>
+  );
+};
