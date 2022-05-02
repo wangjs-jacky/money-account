@@ -34,5 +34,9 @@ export const useTags = () => {
     newTags[index]["name"] = newTagName;
     setTags(newTags);
   };
-  return { tags, setTags, onAddTag, findTag, updatetag };
+  const deleteTag = (tagId: string) => {
+    let newTags = tags.filter((tag) => tag.id !== tagId);
+    setTags(newTags);
+  };
+  return { tags, setTags, onAddTag, findTag, updatetag, deleteTag };
 };
