@@ -1,10 +1,11 @@
+import { Button } from "components/Button";
+import { Center } from "components/Center";
 import { Icon } from "components/Icon";
 import { Layout } from "components/Layout";
+import { Space } from "components/Space";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useTags } from "useTags";
-
-require("icons/right.svg");
 
 const TagList = styled.ol`
   font-size: 16px;
@@ -19,26 +20,6 @@ const TagList = styled.ol`
       align-items: center;
     }
   }
-`;
-
-const Button = styled.button`
-  font-size: 14px;
-  border: none;
-  padding: 8px 12px;
-  background: #262222;
-  border-radius: 4px;
-  color: #fff !important;
-`;
-
-const Center = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-`;
-
-const Space = styled.div`
-  height: 16px;
 `;
 
 export function Tags() {
