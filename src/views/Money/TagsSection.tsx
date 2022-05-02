@@ -1,5 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { useTags } from "useTags";
+import { TagType } from "useTags";
 
 const Wrapper = styled.section`
   background: #ffffff;
@@ -35,44 +37,44 @@ const Wrapper = styled.section`
 
 type Props = {
   value: string[];
-  onChange: (x:string[]) => void;
+  onChange: (x: string[]) => void;
 };
 
-export const TagsSection: React.FC<Props> = ({value,onChange}) => {
-  const [tags, setTags] = useState(["衣", "食", "住", "行"]);
-  const selectedTag = value;
+export const TagsSection: React.FC<Props> = ({ value, onChange }) => {
+  const { tags, setTags } = useTags();
+  const selectedTagIds = value;
   const onAddTag = () => {
     const tagName = window.prompt("请输入新的标签：");
     if (tagName !== null) {
-      setTags([...tags, tagName]);
+      setTags([...tags, { id: Math.random.toString(), name: tagName }]);
     }
   };
 
-  const onToggleTag = (tag: string) => {
-    const index = selectedTag.indexOf(tag);
+  const onToggleTag = (tagId: string) => {
+    const index = selectedTagIds.indexOf(tagId);
     if (index >= 0) {
-      const _selectedTag = selectedTag.slice(0);
-      _selectedTag.splice(index, 1);
-      onChange(_selectedTag);
+      const _selectedTagIds = selectedTagIds.slice(0);
+      _selectedTagIds.splice(index, 1);
+      onChange(_selectedTagIds);
     } else {
-      onChange([...selectedTag, tag]);
+      onChange([...selectedTagIds, tagId]);
     }
   };
 
-  const getClass = (tag: string) =>
-    selectedTag.indexOf(tag) >= 0 ? "selected" : "";
+  const getClass = (tagId: string) =>
+    selectedTagIds.indexOf(tagId) >= 0 ? "selected" : "";
   return (
     <Wrapper>
       <ol>
         {tags.map((tag) => (
           <li
-            key={tag}
-            className={getClass(tag)}
+            key={tag.id}
+            className={getClass(tag.id)}
             onClick={() => {
-              onToggleTag(tag);
+              onToggleTag(tag.id);
             }}
           >
-            {tag}
+            {tag.name}
           </li>
         ))}
       </ol>

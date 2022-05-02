@@ -10,7 +10,7 @@ type Category = "-" | "+";
 export function Money() {
   // 状态： UI 状态以及 筛选状态
   const [selected, setSelected] = useState({
-    tags: [] as string[],
+    tagIds: [] as string[],
     note: "",
     category: "-" as Category,
     amount: "0",
@@ -24,8 +24,8 @@ export function Money() {
   return (
     <Layout>
       <TagsSection
-        value={selected.tags}
-        onChange={(tags) => onChange({ tags: tags })}
+        value={selected.tagIds}
+        onChange={(tagIds) => onChange({ tagIds: tagIds })}
       />
       <NotesSection
         value={selected.note}
