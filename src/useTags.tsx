@@ -1,3 +1,4 @@
+import { createId } from "lib/createId";
 import { useState } from "react";
 
 export type TagType = {
@@ -6,11 +7,11 @@ export type TagType = {
 };
 
 const defaultValue = [
-  { id: "1", name: "衣" },
-  { id: "2", name: "食" },
-  { id: "3", name: "住" },
-  { id: "4", name: "行" },
-  { id: "9", name: "跑" },
+  { id: createId(), name: "衣" },
+  { id: createId(), name: "食" },
+  { id: createId(), name: "住" },
+  { id: createId(), name: "行" },
+  { id: createId(), name: "跑" },
 ];
 
 // 自定义 Hooks
@@ -18,13 +19,14 @@ export const useTags = () => {
   const [tags, setTags] = useState<TagType[]>(defaultValue);
   const onAddTag = () => {
     const tagName = window.prompt("请输入新的标签：");
+    if (tagName === "") return;
     if (tagName !== null) {
-      setTags([...tags, { id: Math.random.toString(), name: tagName }]);
+      setTags([...tags, { id: createId(), name: tagName }]);
     }
   };
   const findTag = (tagId: string) => {
     let tag = tags.find((tag) => tag.id === tagId);
-    return tag?.name
+    return tag?.name;
   };
   return { tags, setTags, onAddTag, findTag };
 };
