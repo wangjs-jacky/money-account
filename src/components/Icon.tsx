@@ -1,3 +1,4 @@
+import cs from "classnames";
 // 自动导入所有的图片
 // https://webpack.js.org/guides/dependency-management/#requirecontext
 // 安装 @types/webpack-env 解决 __WebpackModuleApi.RequireContext 报错
@@ -13,10 +14,10 @@ type Props = {
   tag: string;
 } & React.SVGAttributes<SVGElement>;
 
-export const Icon:React.FC<Props> = (props) => {
+export const Icon: React.FC<Props> = (props) => {
   const { tag, children, className, ...rest } = props;
   return (
-    <svg className="icon" {...rest}>
+    <svg className={cs("icon", className)} {...rest}>
       <use xlinkHref={"#" + tag}></use>
     </svg>
   );
