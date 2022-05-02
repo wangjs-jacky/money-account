@@ -15,6 +15,7 @@ const Topbar = styled.header`
   padding: 14px;
   background: white;
   justify-content: center;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.25);
   span {
     font-size: 20px;
   }
