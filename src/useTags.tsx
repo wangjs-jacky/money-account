@@ -22,5 +22,9 @@ export const useTags = () => {
       setTags([...tags, { id: Math.random.toString(), name: tagName }]);
     }
   };
-  return { tags, setTags, onAddTag };
+  const findTag = (tagId: string) => {
+    let tag = tags.find((tag) => tag.id === tagId);
+    return tag?.name
+  };
+  return { tags, setTags, onAddTag, findTag };
 };

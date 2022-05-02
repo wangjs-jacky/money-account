@@ -49,7 +49,7 @@ export function Tags() {
         {tags.map((tag, index) => (
           <li key={tag.id}>
             <Link to={"/tags/" + tag.id}>
-              <span>{tag.name}</span>
+              <span>{tag.id}--{tag.name}</span>
               <Icon tag="right" />
             </Link>
           </li>
