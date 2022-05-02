@@ -1,5 +1,6 @@
 import { createId } from "lib/createId";
 import { useEffect, useState } from "react";
+import { useUpdate } from "useUpdate";
 
 export type TagType = {
   id: string;
@@ -28,7 +29,7 @@ export const useTags = () => {
 
   // 如果 tags 变化了，则存入 localStorage
   // 在 依赖数组 tags 从 undefined => [] 被错算为一次变化
-  useEffect(() => {
+  useUpdate(() => {
     console.log("22222");
     window.localStorage.setItem("tags", JSON.stringify(tags));
   }, [tags]);
