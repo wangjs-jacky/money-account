@@ -41,14 +41,8 @@ type Props = {
 };
 
 export const TagsSection: React.FC<Props> = ({ value, onChange }) => {
-  const { tags, setTags } = useTags();
+  const { tags, setTags, onAddTag } = useTags();
   const selectedTagIds = value;
-  const onAddTag = () => {
-    const tagName = window.prompt("请输入新的标签：");
-    if (tagName !== null) {
-      setTags([...tags, { id: Math.random.toString(), name: tagName }]);
-    }
-  };
 
   const onToggleTag = (tagId: string) => {
     const index = selectedTagIds.indexOf(tagId);

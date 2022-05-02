@@ -16,5 +16,11 @@ const defaultValue = [
 // 自定义 Hooks
 export const useTags = () => {
   const [tags, setTags] = useState<TagType[]>(defaultValue);
-  return { tags, setTags };
+  const onAddTag = () => {
+    const tagName = window.prompt("请输入新的标签：");
+    if (tagName !== null) {
+      setTags([...tags, { id: Math.random.toString(), name: tagName }]);
+    }
+  };
+  return { tags, setTags, onAddTag };
 };

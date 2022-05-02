@@ -42,7 +42,7 @@ const Space = styled.div`
 `;
 
 export function Tags() {
-  const { tags, setTags } = useTags();
+  const { tags, setTags,onAddTag } = useTags();
   return (
     <Layout>
       <TagList>
@@ -59,7 +59,7 @@ export function Tags() {
         <Space />
         <Space />
         <Space />
-        <Button> 新增标签 </Button>
+        <Button onClick={onAddTag}> 新增标签 </Button>
       </Center>
     </Layout>
   );
