@@ -53,7 +53,15 @@ export const Tag: React.FC = () => {
       <Space />
       <Space />
       <Center>
-        <Button onClick={() => deleteTag(tagId as string)}> 删除标签</Button>
+        <Button
+          onClick={() => {
+            deleteTag(tagId as string);
+            navigate(-1);
+          }}
+        >
+          {" "}
+          删除标签
+        </Button>
       </Center>
     </>
   );
