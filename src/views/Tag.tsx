@@ -15,7 +15,7 @@ const Topbar = styled.header`
   padding: 14px;
   background: white;
   justify-content: center;
-  box-shadow: 0 1px 1px rgba(0,0,0,0.25);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
   span {
     font-size: 20px;
   }
@@ -34,7 +34,7 @@ const InputWrapper = styled.div`
 
 export const Tag: React.FC = () => {
   let { tagId } = useParams();
-  const { tags, findTag } = useTags();
+  const { tags, findTag, updatetag } = useTags();
   const tagName = findTag(tagId as string);
   return (
     <Layout>
@@ -49,7 +49,9 @@ export const Tag: React.FC = () => {
           type="text"
           placeholder="标签名"
           value={tagName}
-          onChange={(e)=>{console.log(e.target.value)}}
+          onChange={(e) => {
+            updatetag(tagId as string, e.target.value);
+          }}
         ></Input>
       </InputWrapper>
       <Space />

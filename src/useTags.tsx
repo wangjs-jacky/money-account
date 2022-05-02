@@ -28,5 +28,11 @@ export const useTags = () => {
     let tag = tags.find((tag) => tag.id === tagId);
     return tag?.name;
   };
-  return { tags, setTags, onAddTag, findTag };
+  const updatetag = (tagId: string, newTagName: string) => {
+    let index = tags.findIndex((tag) => tag.id === tagId);
+    let newTags = JSON.parse(JSON.stringify(tags));
+    newTags[index]["name"] = newTagName;
+    setTags(newTags);
+  };
+  return { tags, setTags, onAddTag, findTag, updatetag };
 };
