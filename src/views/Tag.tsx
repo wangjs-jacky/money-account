@@ -4,9 +4,9 @@ import { Icon } from "components/Icon";
 import { Input } from "components/Input";
 import { Layout } from "components/Layout";
 import { Space } from "components/Space";
+import { useTags } from "hooks/useTags";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
-import { useTags } from "useTags";
 
 const Topbar = styled.header`
   display: flex;

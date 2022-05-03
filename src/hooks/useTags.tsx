@@ -1,6 +1,6 @@
 import { createId } from "lib/createId";
 import { useEffect, useState } from "react";
-import { useUpdate } from "useUpdate";
+import { useUpdate } from "./useUpdate";
 
 export type TagType = {
   id: string;

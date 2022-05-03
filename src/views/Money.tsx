@@ -4,7 +4,7 @@ import { TagsSection } from "./Money/TagsSection";
 import { CategorySection } from "./Money/CategorySection";
 import { NotesSection } from "./Money/NotesSection";
 import { NumberPadSection } from "./Money/NumberPadSection";
-import { useRecords } from "useRecords";
+import { useRecords } from "hooks/useRecords";
 
 type Category = "-" | "+";
 

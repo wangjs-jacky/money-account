@@ -14,9 +14,9 @@ const Nav = styled.nav`
         flex-direction: column;
         align-items: center;
         &.selected{
-          color: red !important;
+          color: #3939dc !important;
           .icon{
-            fill: red !important;
+            fill: #3939dc !important;
           }
         }
       }

@@ -1,8 +1,7 @@
+import { useTags } from "hooks/useTags";
 import styled from "styled-components";
-import { useTags } from "useTags";
 
 const Wrapper = styled.section`
-  border: 1px solid red;
   background: #ffffff;
   padding: 12px 16px;
   flex: 1;
@@ -22,7 +21,8 @@ const Wrapper = styled.section`
       font-size: 14px;
       margin: 8px 12px;
       &.selected {
-        background-color: #f60;
+        background-color: #3939dc;
+        color: #FFF !important;
       }
     }
   }

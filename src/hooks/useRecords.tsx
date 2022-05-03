@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useUpdate } from "useUpdate";
+import { useUpdate } from "./useUpdate";
 
 type RecordItem = {
   tagIds: string[];

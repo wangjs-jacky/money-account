@@ -3,9 +3,9 @@ import { Center } from "components/Center";
 import { Icon } from "components/Icon";
 import { Layout } from "components/Layout";
 import { Space } from "components/Space";
+import { useTags } from "hooks/useTags";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { useTags } from "useTags";
 
 const TagList = styled.ol`
   font-size: 16px;
