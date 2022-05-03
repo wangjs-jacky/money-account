@@ -123,6 +123,10 @@ export const NumberPadSection: React.FC<Props> = ({
   const onClickButton = (e: React.MouseEvent) => {
     console.log("Button Click");
     const text = (e.target as HTMLButtonElement).innerHTML;
+    if (text === "OK") {
+      onOk();
+      return;
+    }
     setOutput(handleText(text, output));
   };
   return (
@@ -140,10 +144,8 @@ export const NumberPadSection: React.FC<Props> = ({
         <button>7</button>
         <button>8</button>
         <button>9</button>
-        <button className="ok" onClick={onOk}>OK</button>
-        <button className="zero">
-          0
-        </button>
+        <button className="ok">OK</button>
+        <button className="zero">0</button>
         <button className="dot">.</button>
       </div>
     </Wrapper>
