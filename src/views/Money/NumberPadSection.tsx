@@ -85,7 +85,6 @@ const handleText = (text: string, output = "0") => {
     case "清空":
       return "0";
     case "OK":
-      console.log(output);
       return output;
     case ".":
       if (output.indexOf(".") >= 0) {
@@ -100,9 +99,14 @@ const handleText = (text: string, output = "0") => {
 type Props = {
   value: string;
   onChange: (x: string) => void;
+  onOk: () => void;
 };
 
-export const NumberPadSection: React.FC<Props> = ({ value, onChange }) => {
+export const NumberPadSection: React.FC<Props> = ({
+  value,
+  onChange,
+  onOk,
+}) => {
   let output = value;
   const setOutput = (output: string) => {
     let value;
@@ -136,7 +140,9 @@ export const NumberPadSection: React.FC<Props> = ({ value, onChange }) => {
         <button>8</button>
         <button>9</button>
         <button className="ok">OK</button>
-        <button className="zero">0</button>
+        <button className="zero" onClick={onOk}>
+          0
+        </button>
         <button className="dot">.</button>
       </div>
     </Wrapper>
