@@ -16,13 +16,15 @@ const Topbar = styled.header`
   background: white;
   justify-content: center;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
-  span {
+  strong {
     font-size: 20px;
   }
   > .icon {
     position: absolute;
     left: 0;
     padding: 0 8px;
+    width: 1.5em;
+    height: 1.5em;
   }
 `;
 
@@ -59,7 +61,6 @@ export const Tag: React.FC = () => {
             navigate(-1);
           }}
         >
-          {" "}
           删除标签
         </Button>
       </Center>
@@ -73,7 +74,7 @@ export const Tag: React.FC = () => {
     <Layout>
       <Topbar>
         <Icon tag="left" onClick={onClickBack}></Icon>
-        <span>编辑标签</span>
+        <strong>编辑标签</strong>
       </Topbar>
       {tagName ? tagContent() : <Center> tag 不存在</Center>}
     </Layout>

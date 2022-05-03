@@ -10,9 +10,15 @@ import styled from "styled-components";
 const TagList = styled.ol`
   font-size: 16px;
   > li {
-    margin: 0 15px;
-    border-bottom: 1px solid #d5d5d9;
+    border: 1px solid #000;
+    border-radius: 8px;
+    margin: 5px 15px;
     line-height: 16px;
+    .text{
+      flex: 1;
+      padding-left: 8px;
+      justify-content: flex-start;
+    }
     > a {
       padding: 8px 16px 8px 0;
       display: flex;
@@ -30,7 +36,8 @@ export function Tags() {
         {tags.map((tag, index) => (
           <li key={tag.id}>
             <Link to={"/tags/" + tag.id}>
-              <span>{tag.id}--{tag.name}</span>
+              <Icon tag={"dot"} ></Icon>
+              <span className="text">{tag.name}</span>
               <Icon tag="right" />
             </Link>
           </li>

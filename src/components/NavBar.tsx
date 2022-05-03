@@ -13,6 +13,10 @@ const Nav = styled.nav`
         display: flex;
         flex-direction: column;
         align-items: center;
+        svg{
+          width: 1.5em;
+          height: 1.5em;
+        }
         &.selected{
           color: #3939dc !important;
           .icon{

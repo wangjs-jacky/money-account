@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useUpdate } from "./useUpdate";
 import defaultRecord from "test/defaultRecords.json";
 
-type RecordItem = {
+export type RecordItem = {
   tagIds: string[];
   note: string;
   category: "+" | "-";
@@ -15,7 +15,6 @@ type newRecordItem = Omit<RecordItem, "createAt">;
 // 专门用于缓存 Money 页面中被选中的数据
 export const useRecords = () => {
   const [moneyRecords, setMoneyRecords] = useState<RecordItem[]>([]);
-  console.log(JSON.stringify(moneyRecords));
 
   //  读 records ，为了后续比较
   useEffect(() => {

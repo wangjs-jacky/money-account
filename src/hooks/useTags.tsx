@@ -15,11 +15,12 @@ export const useTags = () => {
     let localTags = JSON.parse(window.localStorage.getItem("tags") || "[]");
     if (localTags.length === 0) {
       localTags = [
-        { id: createId(), name: "衣" },
-        { id: createId(), name: "食" },
-        { id: createId(), name: "住" },
-        { id: createId(), name: "行" },
-      ];;
+        { id: createId(), name: "网易云" },
+        { id: createId(), name: "手机充值" },
+        { id: createId(), name: "自助餐" },
+        { id: createId(), name: "购买课程" },
+        { id: createId(), name: "收入" },
+      ];
     }
     setTags(localTags);
   }, []);

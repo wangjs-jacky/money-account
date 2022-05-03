@@ -9,6 +9,7 @@ require("icons/statistics.svg");
 require("icons/tag.svg");
 require("icons/left.svg");
 require("icons/right.svg");
+require("icons/dot.svg");
 
 type Props = {
   tag: string;
