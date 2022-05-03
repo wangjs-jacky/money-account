@@ -37,5 +37,5 @@ export const useRecords = () => {
     setMoneyRecords([...moneyRecords, record]);
     return true;
   };
-  return { addRecord };
+  return { moneyRecords, addRecord };
 };
