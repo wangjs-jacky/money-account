@@ -26,6 +26,8 @@ export function Money() {
   };
 
   const submit = () => {
+    console.log("submit click");
+    
     if (addRecord(selected)) {
       console.log("保存成功");
     }
