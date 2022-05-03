@@ -1,8 +1,10 @@
 import { Layout } from "components/Layout";
 import { useRecords } from "hooks/useRecords";
+import { useTags } from "hooks/useTags";
 import { useState } from "react";
 import styled from "styled-components";
 import { CategorySection } from "./Money/CategorySection";
+import day from "dayjs";
 
 const Wrapper = styled.div`
   ul {
@@ -14,6 +16,7 @@ const Wrapper = styled.div`
 export function Statistics() {
   const [category, setCategory] = useState<"+" | "-">("-");
   const { moneyRecords } = useRecords();
+  const { findTag } = useTags();
   return (
     <Layout>
       <Wrapper>
@@ -27,10 +30,14 @@ export function Statistics() {
       {moneyRecords.map((record) => {
         return (
           <>
-            <li>{record.tagIds.map(tagId=>(<span>{tagId}</span>))}</li>
+            <li>
+              {record.tagIds.map((tagId) => (
+                <span>{findTag(tagId)}</span>
+              ))}
+            </li>
             <li>{record.note}</li>
             <li>{record.amount}</li>
-            <li>{record.createAt}</li>
+            <li>{day(record.createAt).format("YYYY年MM月DD日")}</li>
             <li>----------</li>
           </>
         );
