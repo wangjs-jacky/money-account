@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useUpdate } from "./useUpdate";
+import defaultRecord from "test/defaultRecords.json";
 
 type RecordItem = {
   tagIds: string[];
@@ -14,9 +15,14 @@ type newRecordItem = Omit<RecordItem, "createAt">;
 // 专门用于缓存 Money 页面中被选中的数据
 export const useRecords = () => {
   const [moneyRecords, setMoneyRecords] = useState<RecordItem[]>([]);
+  console.log(JSON.stringify(moneyRecords));
+
   //  读 records ，为了后续比较
   useEffect(() => {
-    setMoneyRecords(JSON.parse(window.localStorage.getItem("records") || "[]"));
+    setMoneyRecords(
+      JSON.parse(
+        window.localStorage.getItem("records") || JSON.stringify(defaultRecord))
+    );
   }, []);
 
   //  监听 records ,如果变化，则 写入 localStorage
