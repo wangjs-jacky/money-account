@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useTags } from "useTags";
 
 const Wrapper = styled.section`
+  border: 1px solid red;
   background: #ffffff;
   padding: 12px 16px;
   flex: 1;
@@ -9,8 +10,10 @@ const Wrapper = styled.section`
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-start;
+  overflow: auto;
   > ol {
     margin: 0 -12px;
+    overflow: auto;
     > li {
       background: #d9d9d9;
       border-radius: 18px;
