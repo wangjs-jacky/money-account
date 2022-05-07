@@ -1,46 +1,34 @@
-# Getting Started with Create React App
+## 0.说明
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+本项目基于 `React+Typescript` 开发的记账项目。
 
-## Available Scripts
+## 1. 技术栈
 
-In the project directory, you can run:
+项目使用到的技术栈有：
 
-### `yarn start`
+1. `React` 框架 + `Typescript` + `React-Router v6` 
+2. 样式方案如下：
+   -  使用 `styled-components` 作为 `Css in JS` 方案。
+   - 使用 `helper.scss` 存储全局样式变量。
+   - 使用`@import-normalize` 进行 `css reset` 。
+   - 字体采用的是：[https://github.com/zenozeng/fonts.css/](https://github.com/zenozeng/fonts.css/)
+3. 状态管理方案：
+   - 封装 自定义`Hooks useTags`  实现组件状态共享。
+   - 封装 `useUpdate` 解决 `useEffect` 初次渲染问题。
+   - 使用 `localStorage` 进行全局状态的缓存。
+4. 其余第三库使用：
+   1. 使用 `svg-sprite-loader` 实现 `svg` 激活变色功能。
+   2. 使用 `classname` 解决自定义组件 `classname` 继承。
+   3. 使用 `dayjs` 实现对`IOS 8601`日期的格式化显示。
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `yarn test`
+## 2.项目功能演示
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+记账项目按照功能划分为三块:
 
-### `yarn build`
+1. 标签页：管理标签。
+2. 记账页：可记录支出及收入行为。
+3. 统计页：金额记录的展示区域。
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+<img src="/Users/jiashengwang/Desktop/money.gif" alt="money" style="zoom:67%;" />

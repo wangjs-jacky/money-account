@@ -29,8 +29,8 @@ function App() {
       <Route path="/tags/:tagId" element={<Tag></Tag>}></Route>
       <Route path="/money" element={<Money></Money>}></Route>
       <Route path="/statistics" element={<Statistics></Statistics>}></Route>
-      <Route path="*" element={<Navigate to={"/money"} />}></Route>
-      {/* <Route path="*" element={<NoMatch></NoMatch>}></Route> */}
+      <Route path="/" element={<Navigate to={"/money"} />}></Route>
+      <Route path="*" element={<NoMatch></NoMatch>}></Route>
     </Routes>
   );
 }
