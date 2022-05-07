@@ -31,4 +31,4 @@
 2. 记账页：可记录支出及收入行为。
 3. 统计页：金额记录的展示区域。
 
-<img src="/Users/jiashengwang/Desktop/money.gif" alt="money" style="zoom:67%;" />
+<img src="https://wjs-tik.oss-cn-shanghai.aliyuncs.com/money.gif" alt="money" style="zoom:67%;" />
